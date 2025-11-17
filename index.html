@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Falling</title>
+    <style>
+        /* Basic styling to make the canvas fill the entire screen */
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Hides scrollbars */
+            background-color: #000; /* Black background */
+        }
+        canvas {
+            display: block; /* Removes any default spacing */
+        }
+    </style>
+</head>
+<body>
+    <!-- The canvas element is where all the animation will be drawn -->
+    <canvas id="matrixCanvas"></canvas>
+
+    <script>
+        // Get the canvas element and its 2D drawing context
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Set the canvas to fill the full browser window
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // The characters that will be falling
+        const binary = "01";
+        
+        // Set the font size and calculate the number of columns
+        const fontSize = 16;
+        // *** FIX: Changed 'const' to 'let' to allow 'columns' to be reassigned on window resize ***
+        let columns = Math.floor(canvas.width / fontSize);
+
+        // This array will store the "y" position (the drop) for each column
+        // We initialize each drop at a random starting height (y-coordinate)
+        const drops = [];
+        for (let x = 0; x < columns; x++) {
+            drops[x] = Math.floor(Math.random() * canvas.height / fontSize);
+        }
+
+        // The main drawing loop
+        function draw() {
+            // Fill the canvas with a semi-transparent black.
+            // This creates the "fading" effect for the trails.
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Set the color and font for the binary digits
+            ctx.fillStyle = '#0F0'; // Bright green
+            ctx.font = `${fontSize}px monospace`;
+
+            // Loop through each column (each drop)
+            for (let i = 0; i < drops.length; i++) {
+                // Pick a random binary digit
+                const text = binary[Math.floor(Math.random() * binary.length)];
+                
+                // Get the current y-position for this column
+                const y = drops[i] * fontSize;
+
+                // Draw the digit at its (x, y) position
+                ctx.fillText(text, i * fontSize, y);
+
+                // Check if the drop has reached the bottom of the screen
+                // *** FIX: Removed the '&& Math.random() > 0.975' ***
+                // This removes the random delay and makes the loop continuous.
+                if (y > canvas.height) {
+                    // Reset it back to the top (y = 0)
+                    drops[i] = 0;
+                } else {
+                    // Move the drop down for the next frame
+                    drops[i]++;
+                }
+            }
+        }
+
+        // Start the animation loop, calling the 'draw' function ~30 times per second
+        setInterval(draw, 33);
+
+        // Add an event listener to resize the canvas if the window size changes
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            // Recalculate columns based on new width
+            const newColumns = Math.floor(canvas.width / fontSize);
+            
+            // Adjust the drops array to the new number of columns
+            // If newColumns > columns, add new drops
+            for (let x = columns; x < newColumns; x++) {
+                drops[x] = Math.floor(Math.random() * canvas.height / fontSize);
+            }
+            // If newColumns < columns, truncate the array
+            drops.length = newColumns;
+
+            // Update the columns variable
+            columns = newColumns;
+        });
+    </script>
+</body>
+</html>
