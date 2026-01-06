@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matrix Name Drop</title>
     <style>
         /* Basic styling to make the canvas fill the entire screen */
-        body, html {
+        body,
+        html {
             margin: 0;
             padding: 0;
-            overflow: hidden; /* Hides scrollbars */
-            background-color: #000; /* Default Black background */
+            overflow: hidden;
+            /* Hides scrollbars */
+            background-color: #000;
+            /* Default Black background */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            transition: background-color 0.8s ease; /* Smooth color transition */
+            transition: background-color 0.8s ease;
+            /* Smooth color transition */
         }
+
         canvas {
             display: block;
         }
@@ -21,14 +27,17 @@
         /* UI Overlay for Buttons - Moved to Bottom */
         .ui-controls {
             position: absolute;
-            bottom: 40px; /* Position at bottom */
+            bottom: 40px;
+            /* Position at bottom */
             left: 50%;
-            transform: translateX(-50%); /* Center horizontally */
+            transform: translateX(-50%);
+            /* Center horizontally */
             display: flex;
             gap: 20px;
             z-index: 10;
             padding: 10px 20px;
-            background: rgba(0, 0, 0, 0.2); /* Slight container background */
+            background: rgba(0, 0, 0, 0.2);
+            /* Slight container background */
             border-radius: 50px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(5px);
@@ -40,10 +49,12 @@
             background: rgba(255, 255, 255, 0.05);
             color: rgba(255, 255, 255, 0.9);
             cursor: pointer;
-            border-radius: 30px; /* Fully rounded edges */
+            border-radius: 30px;
+            /* Fully rounded edges */
             font-size: 14px;
             font-weight: 500;
-            backdrop-filter: blur(10px); /* Glassy effect */
+            backdrop-filter: blur(10px);
+            /* Glassy effect */
             -webkit-backdrop-filter: blur(10px);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
@@ -87,7 +98,8 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.6);
-            display: none; /* Hidden by default */
+            display: none;
+            /* Hidden by default */
             justify-content: center;
             align-items: center;
             z-index: 20;
@@ -181,7 +193,7 @@
             display: none;
             width: 20px;
             height: 20px;
-            border: 2px solid rgba(255,255,255,0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
             border-top-color: #fff;
             animation: spin 1s ease-in-out infinite;
@@ -189,7 +201,9 @@
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .loading .spinner {
@@ -197,15 +211,16 @@
         }
     </style>
 </head>
+
 <body>
     <!-- The canvas element -->
     <canvas id="matrixCanvas"></canvas>
 
     <!-- Bottom Buttons (Glassy & Rounded) -->
     <div class="ui-controls">
-        <button class="btn btn-ai" onclick="openAIModal()">
+        <!-- <button class="btn btn-ai" onclick="openAIModal()">
             ✨ AI Theme
-        </button>
+        </button> -->
         <button class="btn" onclick="openSettingsModal()">
             Name Change
         </button>
@@ -219,7 +234,7 @@
     <div class="modal-overlay" id="settingsModal">
         <div class="glass-card">
             <h2 style="margin-top: 0; margin-bottom: 25px; font-weight: 300; letter-spacing: 1px;">Customize Rain</h2>
-            
+
             <div class="form-group">
                 <label for="usernameInput">Enter Name (Characters will fall)</label>
                 <input type="text" id="usernameInput" class="form-control" placeholder="e.g., Madhavan" maxlength="20">
@@ -228,12 +243,15 @@
             <div class="form-group">
                 <label for="colorInput">Choose Text Color</label>
                 <input type="color" id="colorInput" class="form-control" value="#00FF00">
-                <p style="font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 5px;">*Background will automatically be the complementary color</p>
+                <p style="font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 5px;">*Background will
+                    automatically be the complementary color</p>
             </div>
 
             <div class="modal-actions">
-                <button class="btn" style="background: rgba(255, 80, 80, 0.2); border-color: rgba(255,80,80,0.3);" onclick="closeModal('settingsModal')">Cancel</button>
-                <button class="btn" style="background: rgba(80, 255, 80, 0.2); border-color: rgba(80,255,80,0.3);" onclick="applyManualSettings()">Apply</button>
+                <button class="btn" style="background: rgba(255, 80, 80, 0.2); border-color: rgba(255,80,80,0.3);"
+                    onclick="closeModal('settingsModal')">Cancel</button>
+                <button class="btn" style="background: rgba(80, 255, 80, 0.2); border-color: rgba(80,255,80,0.3);"
+                    onclick="applyManualSettings()">Apply</button>
             </div>
         </div>
     </div>
@@ -242,14 +260,16 @@
     <div class="modal-overlay" id="aiModal">
         <div class="glass-card">
             <h2 style="margin-top: 0; margin-bottom: 25px; font-weight: 300;">✨ AI Dreamer</h2>
-            
+
             <div class="form-group">
                 <label for="aiPrompt">Describe a vibe, theme, or ask a question:</label>
-                <textarea id="aiPrompt" class="form-control" placeholder="e.g. 'Cherry Blossoms in Spring', 'Cyberpunk City', 'What is the matrix?'"></textarea>
+                <textarea id="aiPrompt" class="form-control"
+                    placeholder="e.g. 'Cherry Blossoms in Spring', 'Cyberpunk City', 'What is the matrix?'"></textarea>
             </div>
 
             <div class="modal-actions">
-                <button class="btn" style="background: rgba(255, 80, 80, 0.2); border-color: rgba(255,80,80,0.3);" onclick="closeModal('aiModal')">Cancel</button>
+                <button class="btn" style="background: rgba(255, 80, 80, 0.2); border-color: rgba(255,80,80,0.3);"
+                    onclick="closeModal('aiModal')">Cancel</button>
                 <button id="aiBtn" class="btn btn-ai" onclick="generateAITheme()">
                     <span>Generate</span>
                     <div class="spinner"></div>
@@ -271,11 +291,11 @@
 
         // --- State Variables ---
         // Default binary, will be replaced by user name
-        let characters = "01"; 
+        let characters = "01";
         let textColor = "#0F0"; // Default bright green
         // Background color logic: defaults to dark opacity
-        let bgFadeColor = "rgba(0, 0, 0, 0.05)"; 
-        
+        let bgFadeColor = "rgba(0, 0, 0, 0.05)";
+
         const fontSize = 16;
         let columns = Math.floor(canvas.width / fontSize);
 
@@ -296,7 +316,7 @@
             for (let i = 0; i < drops.length; i++) {
                 // If user entered a name, we cycle through it or pick randomly
                 const text = characters.charAt(Math.floor(Math.random() * characters.length));
-                
+
                 const y = drops[i] * fontSize;
 
                 ctx.fillText(text, i * fontSize, y);
@@ -315,9 +335,9 @@
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-            
+
             const newColumns = Math.floor(canvas.width / fontSize);
-            
+
             if (newColumns > columns) {
                 for (let x = columns; x < newColumns; x++) {
                     drops[x] = Math.floor(Math.random() * canvas.height / fontSize);
@@ -360,7 +380,7 @@
         function applyTheme(chars, color) {
             // 1. Update Falling Text
             if (chars && chars.length > 0) {
-                characters = chars.replace(/\s/g, ''); 
+                characters = chars.replace(/\s/g, '');
             } else {
                 characters = "01";
             }
@@ -420,7 +440,7 @@
                 const themeData = JSON.parse(resultText);
 
                 applyTheme(themeData.characters, themeData.color);
-                
+
                 // Update inputs
                 usernameInput.value = themeData.characters;
                 colorInput.value = themeData.color;
@@ -442,11 +462,11 @@
 
         // NEW: Calculates a darkened complementary color for contrast
         function getDarkComplementaryRgba(hex, alpha, isSolid = false) {
-            if(hex.length === 4) {
-                 hex = '#' + hex[1] + hex[1] + hex[2] + hex[2] + hex[3] + hex[3];
+            if (hex.length === 4) {
+                hex = '#' + hex[1] + hex[1] + hex[2] + hex[2] + hex[3] + hex[3];
             }
             hex = hex.replace('#', '');
-            
+
             let r = parseInt(hex.substring(0, 2), 16);
             let g = parseInt(hex.substring(2, 4), 16);
             let b = parseInt(hex.substring(4, 6), 16);
@@ -468,7 +488,7 @@
         }
 
         // Close modals on click outside
-        window.onclick = function(event) {
+        window.onclick = function (event) {
             if (event.target.classList.contains('modal-overlay')) {
                 event.target.classList.remove('active');
             }
@@ -476,4 +496,5 @@
 
     </script>
 </body>
+
 </html>
