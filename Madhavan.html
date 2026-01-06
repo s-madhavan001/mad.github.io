@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madhavan S | AI Developer</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: {
+                            900: '#0f172a', /* slate-900 */
+                            800: '#1e293b', /* slate-800 */
+                            700: '#334155', /* slate-700 */
+                        },
+                        brand: {
+                            accent: '#38bdf8', /* sky-400 */
+                            purple: '#a855f7', /* purple-500 */
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'typewriter': 'typing 3.5s steps(40, end), blink-caret .75s step-end infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        typing: {
+                            from: { width: '0' },
+                            to: { width: '100%' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #38bdf8, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('assets/hero-bg.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+
+<body class="bg-dark-900 text-slate-200 font-sans selection:bg-brand-accent selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 transition-all duration-300 backdrop-blur-md border-b border-white/5 bg-dark-900/80">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold tracking-tighter text-white">
+                M<span class="text-brand-accent">.</span>S
+            </a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-400">
+                <a href="#about" class="hover:text-brand-accent transition-colors">About</a>
+                <a href="#skills" class="hover:text-brand-accent transition-colors">Skills</a>
+                <a href="#experience" class="hover:text-brand-accent transition-colors">Experience</a>
+                <a href="#projects" class="hover:text-brand-accent transition-colors">Projects</a>
+                <a href="#contact" class="hover:text-brand-accent transition-colors">Contact</a>
+            </div>
+            <!-- Mobile menu button (simplified) -->
+            <button class="md:hidden text-slate-300">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden hero-bg">
+        <!-- Floating orbs -->
+        <div class="absolute top-20 left-20 w-72 h-72 bg-brand-purple/20 rounded-full blur-3xl animate-float"></div>
+        <div class="absolute bottom-20 right-20 w-96 h-96 bg-brand-accent/10 rounded-full blur-3xl animate-float"
+            style="animation-delay: 2s;"></div>
+
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+            <div
+                class="mb-4 inline-block px-4 py-1.5 rounded-full border border-brand-accent/30 bg-brand-accent/10 text-brand-accent text-sm font-medium tracking-wide">
+                <span>Available for new projects</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                Hi, I'm <span class="text-gradient">Madhavan S</span>
+            </h1>
+            <div class="h-10 mb-8 flex justify-center items-center">
+                <p
+                    class="text-xl md:text-2xl text-slate-300 font-light overflow-hidden whitespace-nowrap border-r-4 border-brand-accent pr-2 animate-typewriter">
+                    AI Development & Conversational Systems
+                </p>
+            </div>
+
+            <p class="text-slate-400 max-w-lg mx-auto mb-10 leading-relaxed">
+                Building intelligent solutions with Python, PyTorch, and LLMs. Specializing in RAG systems and Computer
+                Vision.
+            </p>
+
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#projects"
+                    class="px-8 py-3.5 rounded-lg bg-brand-accent text-dark-900 font-bold hover:bg-brand-accent/90 transition-transform hover:-translate-y-1 shadow-lg shadow-brand-accent/20">
+                    View Portfolio
+                </a>
+                <a href="https://www.linkedin.com/in/madhavan-sri/" target="_blank"
+                    class="px-8 py-3.5 rounded-lg border border-slate-600 text-white hover:border-brand-accent hover:text-brand-accent transition-all">
+                    Linkedin Profile
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-slate-500">
+            <i class="fas fa-chevron-down text-xl"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row gap-16 items-center">
+                <div class="w-full md:w-1/2">
+                    <div class="relative">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-brand-accent to-brand-purple rounded-2xl blur-lg opacity-30 transform rotate-3">
+                        </div>
+                        <div class="relative glass-card p-8 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-white mb-4">About Me</h3>
+                            <p class="text-slate-400 leading-7 mb-4">
+                                I am an AI Developer with approximately 1.5 years of experience in the field of Large
+                                Language Models (LLMs) and Computer Vision. My expertise lies in developing, training,
+                                and deploying robust AI models using PyTorch.
+                            </p>
+                            <p class="text-slate-400 leading-7">
+                                I specialize in building RAG (Retrieval-Augmented Generation) systems and Conversational
+                                AI, leveraging tools like LangChain and YOLO to create practical, real-world solutions
+                                ranging from chatbots to advanced tracking systems.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full md:w-1/2 space-y-8">
+                    <div class="flex items-start">
+                        <div
+                            class="flex-shrink-0 w-12 h-12 rounded-lg bg-brand-accent/10 flex items-center justify-center text-brand-accent mr-4">
+                            <i class="fas fa-brain text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-white">AI & ML Specialist</h4>
+                            <p class="text-slate-500 mt-1">Deep understanding of LLMs, RAG architectures, and model
+                                training.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <div
+                            class="flex-shrink-0 w-12 h-12 rounded-lg bg-brand-purple/10 flex items-center justify-center text-brand-purple mr-4">
+                            <i class="fas fa-eye text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-white">Computer Vision</h4>
+                            <p class="text-slate-500 mt-1">Real-time object detection and tracking using YOLO and local
+                                inference.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <div
+                            class="flex-shrink-0 w-12 h-12 rounded-lg bg-green-500/10 flex items-center justify-center text-green-400 mr-4">
+                            <i class="fas fa-code text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-white">Full Stack Integration</h4>
+                            <p class="text-slate-500 mt-1">Deploying models into production-ready applications with
+                                modern stacks.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-dark-800/50">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-16">Technical <span
+                    class="text-gradient">Arsenal</span></h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Skill Group 1: Languages & Core -->
+                <div class="glass-card p-6 rounded-xl border-t-2 border-brand-accent">
+                    <h3 class="text-xl font-semibold text-white mb-6 flex items-center">
+                        <i class="fas fa-code mr-3 text-brand-accent"></i> Core Technology
+                    </h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-sm border border-slate-600">Python</span>
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-sm border border-slate-600">SQL</span>
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-sm border border-slate-600">Git</span>
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-sm border border-slate-600">Linux</span>
+                    </div>
+                </div>
+
+                <!-- Skill Group 2: AI & ML -->
+                <div class="glass-card p-6 rounded-xl border-t-2 border-brand-purple">
+                    <h3 class="text-xl font-semibold text-white mb-6 flex items-center">
+                        <i class="fas fa-network-wired mr-3 text-brand-purple"></i> AI Frameworks
+                    </h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-sm border border-slate-600">PyTorch</span>
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-sm border border-slate-600">TensorFlow</span>
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-sm border border-slate-600">LangChain</span>
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-sm border border-slate-600">YOLO</span>
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-sm border border-slate-600">HuggingFace</span>
+                    </div>
+                </div>
+
+                <!-- Skill Group 3: Deployment & Tools -->
+                <div class="glass-card p-6 rounded-xl border-t-2 border-green-400">
+                    <h3 class="text-xl font-semibold text-white mb-6 flex items-center">
+                        <i class="fas fa-server mr-3 text-green-400"></i> Deployment
+                    </h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-sm border border-slate-600">Docker</span>
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-sm border border-slate-600">Ollama</span>
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-sm border border-slate-600">Llama.cpp</span>
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-sm border border-slate-600">AWS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section id="experience" class="py-24 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-16">Professional <span
+                    class="text-brand-purple">Journey</span></h2>
+
+            <div class="relative border-l border-slate-700 ml-6 md:ml-10 space-y-12">
+                <!-- Experience Item -->
+                <div class="relative pl-10 md:pl-16">
+                    <div
+                        class="absolute -left-3 top-2 w-6 h-6 rounded-full bg-brand-accent border-4 border-dark-900 shadow-[0_0_10px_rgba(56,189,248,0.5)]">
+                    </div>
+                    <div class="glass-card p-8 rounded-xl hover:bg-slate-800/50 transition-colors">
+                        <div class="flex flex-col md:flex-row justify-between mb-2">
+                            <h3 class="text-2xl font-bold text-white">AI Developer</h3>
+                            <span class="text-brand-accent font-mono text-sm">Present</span>
+                        </div>
+                        <h4 class="text-lg text-slate-400 font-medium mb-4">Elevix Tech LLP</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                            Spearheading the development of advanced AI solutions using Python and PyTorch.
+                        </p>
+                        <ul class="list-disc list-inside text-slate-500 space-y-2 text-sm">
+                            <li>Designing and implementing RAG systems for context-aware data retrieval.</li>
+                            <li>Building conversational AI interfaces for enhanced user interaction.</li>
+                            <li>Deploying computer vision models for real-time analytics.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 px-6 bg-dark-800/30">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-4">Featured <span
+                    class="text-gradient">Projects</span></h2>
+            <p class="text-center text-slate-500 mb-16 max-w-2xl mx-auto">Selected works demonstrating expertise in
+                conversational AI and Computer Vision.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div
+                    class="group relative rounded-xl overflow-hidden bg-dark-900 border border-slate-800 hover:border-brand-accent/50 transition-all duration-300 hover:shadow-2xl hover:shadow-brand-accent/10">
+                    <div class="h-48 bg-slate-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 to-transparent z-10"></div>
+                        <!-- Placeholder visual for project -->
+                        <div
+                            class="w-full h-full bg-[url('https://source.unsplash.com/random/800x600/?ai,robot')] bg-cover bg-center opacity-60 group-hover:scale-110 transition-transform duration-700">
+                        </div>
+                    </div>
+                    <div class="p-6 relative z-20 -mt-10">
+                        <div
+                            class="w-12 h-12 rounded-lg bg-brand-accent flex items-center justify-center text-dark-900 mb-4 shadow-lg">
+                            <i class="fas fa-comments text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Learning Chat Assistant</h3>
+                        <p class="text-slate-400 text-sm mb-4 line-clamp-3">
+                            A sophisticated conversational AI designed to assist in learning processes, leveraging
+                            modern NLP techniques for accurate and helpful responses.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs text-brand-accent font-mono">
+                            <span class="px-2 py-1 bg-brand-accent/10 rounded">RAG</span>
+                            <span class="px-2 py-1 bg-brand-accent/10 rounded">LLM</span>
+                            <span class="px-2 py-1 bg-brand-accent/10 rounded">Python</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div
+                    class="group relative rounded-xl overflow-hidden bg-dark-900 border border-slate-800 hover:border-brand-accent/50 transition-all duration-300 hover:shadow-2xl hover:shadow-brand-accent/10">
+                    <div class="h-48 bg-slate-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 to-transparent z-10"></div>
+                        <div
+                            class="w-full h-full bg-[url('https://source.unsplash.com/random/800x600/?basketball,sport')] bg-cover bg-center opacity-60 group-hover:scale-110 transition-transform duration-700">
+                        </div>
+                    </div>
+                    <div class="p-6 relative z-20 -mt-10">
+                        <div
+                            class="w-12 h-12 rounded-lg bg-brand-purple flex items-center justify-center text-white mb-4 shadow-lg">
+                            <i class="fas fa-video text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Basketball Tracker</h3>
+                        <p class="text-slate-400 text-sm mb-4 line-clamp-3">
+                            Real-time sports analytics system using YOLO to track players and basketball movements,
+                            providing automated insights and statistics.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs text-brand-purple font-mono">
+                            <span class="px-2 py-1 bg-brand-purple/10 rounded">YOLO</span>
+                            <span class="px-2 py-1 bg-brand-purple/10 rounded">Computer Vision</span>
+                            <span class="px-2 py-1 bg-brand-purple/10 rounded">OpenCV</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div
+                    class="group relative rounded-xl overflow-hidden bg-dark-900 border border-slate-800 hover:border-brand-accent/50 transition-all duration-300 hover:shadow-2xl hover:shadow-brand-accent/10">
+                    <div class="h-48 bg-slate-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 to-transparent z-10"></div>
+                        <div
+                            class="w-full h-full bg-[url('https://source.unsplash.com/random/800x600/?cpu,chip')] bg-cover bg-center opacity-60 group-hover:scale-110 transition-transform duration-700">
+                        </div>
+                    </div>
+                    <div class="p-6 relative z-20 -mt-10">
+                        <div
+                            class="w-12 h-12 rounded-lg bg-green-500 flex items-center justify-center text-white mb-4 shadow-lg">
+                            <i class="fas fa-laptop-code text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Local Edge AI</h3>
+                        <p class="text-slate-400 text-sm mb-4 line-clamp-3">
+                            Implementation of high-performance models like SmolVLM on local hardware (MacBook M3) for
+                            privacy-focused, offline-capable AI inference.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs text-green-400 font-mono">
+                            <span class="px-2 py-1 bg-green-500/10 rounded">Llama.cpp</span>
+                            <span class="px-2 py-1 bg-green-500/10 rounded">Edge Computing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="py-20 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-2xl font-bold text-white mb-8">Education</h2>
+            <div
+                class="inline-block p-1 rounded-2xl bg-gradient-to-r from-slate-800 to-slate-900 border border-slate-700">
+                <div class="px-10 py-6">
+                    <h3 class="text-xl font-bold text-white">Anna University</h3>
+                    <p class="text-brand-accent mt-2">B.Tech in Artificial Intelligence & Data Science</p>
+                    <p class="text-slate-500 text-sm mt-1">Foundation in Machine Learning, Algorithms, and System
+                        Design.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="py-12 border-t border-slate-800 bg-dark-900 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+            <h2 class="text-3xl font-bold text-white mb-8">Let's <span class="text-gradient">Connect</span></h2>
+            <div class="flex justify-center space-x-8 mb-12">
+                <a href="https://www.linkedin.com/in/madhavan-sri/" target="_blank"
+                    class="w-14 h-14 rounded-full bg-slate-800 flex items-center justify-center text-2xl text-white hover:bg-brand-accent hover:text-dark-900 transition-all hover:-translate-y-2">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="mailto:contact@madhavan.ai"
+                    class="w-14 h-14 rounded-full bg-slate-800 flex items-center justify-center text-2xl text-white hover:bg-brand-purple hover:text-white transition-all hover:-translate-y-2">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="#"
+                    class="w-14 h-14 rounded-full bg-slate-800 flex items-center justify-center text-2xl text-white hover:bg-white hover:text-dark-900 transition-all hover:-translate-y-2">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <p class="text-slate-600 text-sm">
+                &copy; 2026 Madhavan S. Built with <i class="fas fa-heart text-red-500"></i> using Tailwind CSS.
+            </p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

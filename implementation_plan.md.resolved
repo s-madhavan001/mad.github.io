@@ -1,0 +1,40 @@
+# Portfolio Implementation Plan
+
+**Goal**: Create a stunning, high-performance single-page portfolio for Madhavan S using the parsed LinkedIn data.
+
+## User Review Required
+> [!NOTE]
+> *   **Images**: I will use generated placeholders or generic tech/AI themed images for the hero and project backgrounds since I cannot access your personal photos.
+> *   **Contact Info**: I will use placeholders for email/phone. The LinkedIn URL will be real.
+
+## Proposed Changes
+
+### Project Structure
+Root: `C:\Users\Madhavan Srinivasan\.gemini\antigravity\scratch\portfolio`
+
+#### [NEW] [index.html](file:///C:/Users/Madhavan%20Srinivasan/.gemini/antigravity/scratch/portfolio/index.html)
+- Main HTML file containing all sections.
+- **Tech Stack**: HTML5, Tailwind CSS (CDN), FontAwesome (CDN), Google Fonts (Outfit).
+- **Design System**:
+    - **Theme**: Dark mode (Slate/Zinc palette) with vibrant accent gradients (Blue/Purple/Cyan) to match the "AI/Future" vibe.
+    - **Effects**: Glassmorphism (backdrop-blur), glowing borders, hover lifts.
+- **Sections**:
+    1.  **Navbar**: Fixed, glassmorphism, smooth scroll links.
+    2.  **Hero**: Large name, animated text (Typewriter effect for "AI Developer"), CTA button "View Work".
+    3.  **About**: detailed summary from LinkedIn.
+    4.  **Skills**: Categorized tags (Languages, ML/AI, Tools).
+    5.  **Experience**: Timeline showing Elevix Tech LLP.
+    6.  **Projects**: Cards for "Learning Chat Assistant", "Basketball Tracker", etc.
+    7.  **Education**: Anna University B.Tech details.
+    8.  **Contact**: Footer with social links.
+
+#### [NEW] [assets/](file:///C:/Users/Madhavan%20Srinivasan/.gemini/antigravity/scratch/portfolio/assets/)
+- Directory for generated images (if any).
+
+## Verification Plan
+
+### Manual Verification
+- Open `index.html` in the browser (via `browser_subagent` or asking user) to verify:
+    - Responsiveness (Mobile vs Desktop).
+    - Animations (Hover states, smooth scrolling).
+    - Data correctness (Check spelling of "Madhavan", "Elevix", etc).

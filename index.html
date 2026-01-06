@@ -3,105 +3,477 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Binary Falling</title>
+    <title>Matrix Name Drop</title>
     <style>
         /* Basic styling to make the canvas fill the entire screen */
         body, html {
             margin: 0;
             padding: 0;
             overflow: hidden; /* Hides scrollbars */
-            background-color: #000; /* Black background */
+            background-color: #000; /* Default Black background */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.8s ease; /* Smooth color transition */
         }
         canvas {
-            display: block; /* Removes any default spacing */
+            display: block;
+        }
+
+        /* UI Overlay for Buttons - Moved to Bottom */
+        .ui-controls {
+            position: absolute;
+            bottom: 40px; /* Position at bottom */
+            left: 50%;
+            transform: translateX(-50%); /* Center horizontally */
+            display: flex;
+            gap: 20px;
+            z-index: 10;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.2); /* Slight container background */
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.9);
+            cursor: pointer;
+            border-radius: 30px; /* Fully rounded edges */
+            font-size: 14px;
+            font-weight: 500;
+            backdrop-filter: blur(10px); /* Glassy effect */
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-ai {
+            background: rgba(138, 43, 226, 0.15);
+            border-color: rgba(200, 100, 255, 0.3);
+            color: #e0aaff;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-ai:hover {
+            background: rgba(138, 43, 226, 0.3);
+            border-color: rgba(200, 100, 255, 0.8);
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
+            text-shadow: 0 0 8px rgba(200, 100, 255, 0.8);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* Glassy Modal Styling */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            z-index: 20;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .glass-card {
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            color: white;
+            text-align: center;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .modal-overlay.active .glass-card {
+            transform: scale(1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            outline: none;
+            box-sizing: border-box;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .form-control:focus {
+            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        textarea.form-control {
+            resize: none;
+            height: 100px;
+            font-family: inherit;
+        }
+
+        /* Color picker specific styling */
+        input[type="color"] {
+            height: 45px;
+            cursor: pointer;
+            padding: 2px;
+            background: transparent;
+        }
+
+        .modal-actions {
+            margin-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .modal-actions .btn {
+            flex: 1;
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading .spinner {
+            display: inline-block;
         }
     </style>
 </head>
 <body>
-    <!-- The canvas element is where all the animation will be drawn -->
+    <!-- The canvas element -->
     <canvas id="matrixCanvas"></canvas>
 
+    <!-- Bottom Buttons (Glassy & Rounded) -->
+    <div class="ui-controls">
+        <button class="btn btn-ai" onclick="openAIModal()">
+            ✨ AI Theme
+        </button>
+        <button class="btn" onclick="openSettingsModal()">
+            Name Change
+        </button>
+        <!-- Button 2: Redirects to madhavan.html -->
+        <a href="Madhavan.html" class="btn">
+            Create
+        </a>
+    </div>
+
+    <!-- Manual Settings Modal -->
+    <div class="modal-overlay" id="settingsModal">
+        <div class="glass-card">
+            <h2 style="margin-top: 0; margin-bottom: 25px; font-weight: 300; letter-spacing: 1px;">Customize Rain</h2>
+            
+            <div class="form-group">
+                <label for="usernameInput">Enter Name (Characters will fall)</label>
+                <input type="text" id="usernameInput" class="form-control" placeholder="e.g., Madhavan" maxlength="20">
+            </div>
+
+            <div class="form-group">
+                <label for="colorInput">Choose Text Color</label>
+                <input type="color" id="colorInput" class="form-control" value="#00FF00">
+                <p style="font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 5px;">*Background will automatically be the complementary color</p>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn" style="background: rgba(255, 80, 80, 0.2); border-color: rgba(255,80,80,0.3);" onclick="closeModal('settingsModal')">Cancel</button>
+                <button class="btn" style="background: rgba(80, 255, 80, 0.2); border-color: rgba(80,255,80,0.3);" onclick="applyManualSettings()">Apply</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Theme Modal -->
+    <div class="modal-overlay" id="aiModal">
+        <div class="glass-card">
+            <h2 style="margin-top: 0; margin-bottom: 25px; font-weight: 300;">✨ AI Dreamer</h2>
+            
+            <div class="form-group">
+                <label for="aiPrompt">Describe a vibe, theme, or ask a question:</label>
+                <textarea id="aiPrompt" class="form-control" placeholder="e.g. 'Cherry Blossoms in Spring', 'Cyberpunk City', 'What is the matrix?'"></textarea>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn" style="background: rgba(255, 80, 80, 0.2); border-color: rgba(255,80,80,0.3);" onclick="closeModal('aiModal')">Cancel</button>
+                <button id="aiBtn" class="btn btn-ai" onclick="generateAITheme()">
+                    <span>Generate</span>
+                    <div class="spinner"></div>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Get the canvas element and its 2D drawing context
+        // --- Gemini API Configuration ---
+        const apiKey = ""; // System will inject the key
+
+        // --- Canvas Setup ---
         const canvas = document.getElementById('matrixCanvas');
         const ctx = canvas.getContext('2d');
 
-        // Set the canvas to fill the full browser window
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        // The characters that will be falling
-        const binary = "01";
+        // --- State Variables ---
+        // Default binary, will be replaced by user name
+        let characters = "01"; 
+        let textColor = "#0F0"; // Default bright green
+        // Background color logic: defaults to dark opacity
+        let bgFadeColor = "rgba(0, 0, 0, 0.05)"; 
         
-        // Set the font size and calculate the number of columns
         const fontSize = 16;
-        // *** FIX: Changed 'const' to 'let' to allow 'columns' to be reassigned on window resize ***
         let columns = Math.floor(canvas.width / fontSize);
 
-        // This array will store the "y" position (the drop) for each column
-        // We initialize each drop at a random starting height (y-coordinate)
         const drops = [];
         for (let x = 0; x < columns; x++) {
             drops[x] = Math.floor(Math.random() * canvas.height / fontSize);
         }
 
-        // The main drawing loop
+        // --- Drawing Loop ---
         function draw() {
-            // Fill the canvas with a semi-transparent black.
-            // This creates the "fading" effect for the trails.
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            // Fill with semi-transparent background to create trails
+            ctx.fillStyle = bgFadeColor;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            // Set the color and font for the binary digits
-            ctx.fillStyle = '#0F0'; // Bright green
+            ctx.fillStyle = textColor;
             ctx.font = `${fontSize}px monospace`;
 
-            // Loop through each column (each drop)
             for (let i = 0; i < drops.length; i++) {
-                // Pick a random binary digit
-                const text = binary[Math.floor(Math.random() * binary.length)];
+                // If user entered a name, we cycle through it or pick randomly
+                const text = characters.charAt(Math.floor(Math.random() * characters.length));
                 
-                // Get the current y-position for this column
                 const y = drops[i] * fontSize;
 
-                // Draw the digit at its (x, y) position
                 ctx.fillText(text, i * fontSize, y);
 
-                // Check if the drop has reached the bottom of the screen
-                // *** FIX: Removed the '&& Math.random() > 0.975' ***
-                // This removes the random delay and makes the loop continuous.
-                if (y > canvas.height) {
-                    // Reset it back to the top (y = 0)
+                if (y > canvas.height && Math.random() > 0.975) {
                     drops[i] = 0;
                 } else {
-                    // Move the drop down for the next frame
                     drops[i]++;
                 }
             }
         }
 
-        // Start the animation loop, calling the 'draw' function ~30 times per second
-        setInterval(draw, 33);
+        let animationId = setInterval(draw, 33);
 
-        // Add an event listener to resize the canvas if the window size changes
+        // --- Resize Handler ---
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             
-            // Recalculate columns based on new width
             const newColumns = Math.floor(canvas.width / fontSize);
             
-            // Adjust the drops array to the new number of columns
-            // If newColumns > columns, add new drops
-            for (let x = columns; x < newColumns; x++) {
-                drops[x] = Math.floor(Math.random() * canvas.height / fontSize);
+            if (newColumns > columns) {
+                for (let x = columns; x < newColumns; x++) {
+                    drops[x] = Math.floor(Math.random() * canvas.height / fontSize);
+                }
+            } else {
+                drops.length = newColumns;
             }
-            // If newColumns < columns, truncate the array
-            drops.length = newColumns;
-
-            // Update the columns variable
             columns = newColumns;
         });
+
+
+        // --- UI & Logic Functions ---
+
+        const usernameInput = document.getElementById('usernameInput');
+        const colorInput = document.getElementById('colorInput');
+
+        function openSettingsModal() {
+            document.getElementById('settingsModal').classList.add('active');
+            if (characters !== "01") {
+                usernameInput.value = characters;
+            }
+        }
+
+        function openAIModal() {
+            document.getElementById('aiModal').classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        function applyManualSettings() {
+            const name = usernameInput.value.trim();
+            const color = colorInput.value;
+            applyTheme(name, color);
+            closeModal('settingsModal');
+        }
+
+        // Central function to update the app state
+        function applyTheme(chars, color) {
+            // 1. Update Falling Text
+            if (chars && chars.length > 0) {
+                characters = chars.replace(/\s/g, ''); 
+            } else {
+                characters = "01";
+            }
+
+            // 2. Update Text Color
+            textColor = color;
+
+            // 3. Update Background Color (CONTRAST / COMPLEMENTARY LOGIC)
+            // We find the complementary color and make it very dark
+            const darkCompBg = getDarkComplementaryRgba(color, 0.05); // For trails
+            const solidCompBg = getDarkComplementaryRgba(color, 1, true); // For body
+
+            bgFadeColor = darkCompBg;
+            document.body.style.backgroundColor = solidCompBg;
+        }
+
+        // --- AI Logic ---
+
+        async function generateAITheme() {
+            const promptInput = document.getElementById('aiPrompt');
+            const userPrompt = promptInput.value.trim();
+            const btn = document.getElementById('aiBtn');
+
+            if (!userPrompt) return;
+
+            btn.classList.add('loading');
+            btn.disabled = true;
+
+            try {
+                const systemPrompt = `
+                    You are a configuration generator for a falling-text visualizer.
+                    Generate a JSON object with:
+                    1. 'color': A hex code string for the TEXT color (make it bright/neon).
+                    2. 'characters': A string of characters.
+                    
+                    Rules:
+                    - Theme: "${userPrompt}"
+                    - If theme is abstract, use random symbols.
+                    - If it's a question, answer it in 'characters'.
+                    - RETURN ONLY RAW JSON.
+                `;
+
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: userPrompt }] }],
+                        systemInstruction: { parts: [{ text: systemPrompt }] },
+                        generationConfig: { responseMimeType: "application/json" }
+                    })
+                });
+
+                if (!response.ok) throw new Error(`API Error: ${response.status}`);
+
+                const data = await response.json();
+                const resultText = data.candidates[0].content.parts[0].text;
+                const themeData = JSON.parse(resultText);
+
+                applyTheme(themeData.characters, themeData.color);
+                
+                // Update inputs
+                usernameInput.value = themeData.characters;
+                colorInput.value = themeData.color;
+
+                closeModal('aiModal');
+
+            } catch (error) {
+                console.error("AI Error:", error);
+                alert("The Oracle is disconnected.");
+            } finally {
+                btn.classList.remove('loading');
+                btn.disabled = false;
+                promptInput.value = '';
+            }
+        }
+
+
+        // --- Helper Functions ---
+
+        // NEW: Calculates a darkened complementary color for contrast
+        function getDarkComplementaryRgba(hex, alpha, isSolid = false) {
+            if(hex.length === 4) {
+                 hex = '#' + hex[1] + hex[1] + hex[2] + hex[2] + hex[3] + hex[3];
+            }
+            hex = hex.replace('#', '');
+            
+            let r = parseInt(hex.substring(0, 2), 16);
+            let g = parseInt(hex.substring(2, 4), 16);
+            let b = parseInt(hex.substring(4, 6), 16);
+
+            // Invert colors to find complementary
+            let compR = 255 - r;
+            let compG = 255 - g;
+            let compB = 255 - b;
+
+            // Darken it significantly (keep only 10% of the brightness)
+            // This creates a dark background that is tinted with the complementary color
+            const darknessFactor = 0.15;
+
+            compR = Math.floor(compR * darknessFactor);
+            compG = Math.floor(compG * darknessFactor);
+            compB = Math.floor(compB * darknessFactor);
+
+            return `rgba(${compR}, ${compG}, ${compB}, ${alpha})`;
+        }
+
+        // Close modals on click outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.classList.remove('active');
+            }
+        }
+
     </script>
 </body>
 </html>
