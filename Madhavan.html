@@ -4,10 +4,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Madhavan S | AI Developer</title>
+
+    <!-- SEO Optimization -->
+    <title>Mady S | AI Developer | LLM, RAG & Computer Vision</title>
+    <meta name="description"
+        content="AI Developer specializing in LLMs, RAG systems, AI Automation, Computer Vision, LangChain, and Backend Development.">
+    <meta name="keywords"
+        content="AI Developer, LLM Engineer, RAG Developer, AI Automation, n8n, Computer Vision, YOLO, OpenCV, Python, Django, FastAPI, LangChain, Vector Databases">
+    <meta name="author" content="Madhavan S">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://s-madhavan001.github.io/">
+    <meta property="og:title" content="Mady S | AI Developer | LLM, RAG & Computer Vision">
+    <meta property="og:description"
+        content="AI Developer specializing in LLMs, RAG systems, AI Automation, Computer Vision, LangChain, and Backend Development.">
+    <meta property="og:image" content="https://s-madhavan001.github.io/assets/meta-banner.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://s-madhavan001.github.io/">
+    <meta property="twitter:title" content="Mady S | AI Developer | LLM, RAG & Computer Vision">
+    <meta property="twitter:description"
+        content="AI Developer specializing in LLMs, RAG systems, AI Automation, Computer Vision, LangChain, and Backend Development.">
+    <meta property="twitter:image" content="https://s-madhavan001.github.io/assets/meta-banner.png">
+
+    <!-- JSON-LD Structured Metadata -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Madhavan S",
+      "jobTitle": "AI Developer",
+      "url": "https://s-madhavan001.github.io/",
+      "sameAs": [
+        "https://www.linkedin.com/in/madhavan-sri/",
+        "https://github.com/s-madhavan001"
+      ],
+      "knowsAbout": [
+        "Artificial Intelligence",
+        "Large Language Models",
+        "Retrieval-Augmented Generation",
+        "Computer Vision",
+        "AI Automation",
+        "Python",
+        "FastAPI",
+        "Django",
+        "LangChain",
+        "n8n"
+      ]
+    }
+    </script>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome -->
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -87,6 +138,23 @@
             background-position: center;
             background-attachment: fixed;
         }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: #38bdf8
+            }
+        }
+
+        .typewriter-cursor {
+            border-right: 4px solid #38bdf8;
+            animation: blink-caret .75s step-end infinite;
+        }
     </style>
 </head>
 
@@ -95,7 +163,7 @@
     <!-- Navbar -->
     <nav class="fixed w-full z-50 transition-all duration-300 backdrop-blur-md border-b border-white/5 bg-dark-900/80">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold tracking-tighter text-white">
+            <a href="#" class="text-2xl font-bold tracking-tighter text-white" aria-label="Home">
                 M<span class="text-brand-accent">.</span>S
             </a>
             <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-400">
@@ -105,10 +173,21 @@
                 <a href="#projects" class="hover:text-brand-accent transition-colors">Projects</a>
                 <a href="#contact" class="hover:text-brand-accent transition-colors">Contact</a>
             </div>
-            <!-- Mobile menu button (simplified) -->
-            <button class="md:hidden text-slate-300">
+            <!-- Mobile menu button -->
+            <button id="menu-btn" class="md:hidden text-slate-300 hover:text-brand-accent focus:outline-none"
+                aria-label="Toggle navigation menu">
                 <i class="fas fa-bars text-xl"></i>
             </button>
+        </div>
+
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-dark-900/95 border-b border-white/5 px-6 py-4 space-y-3 text-sm font-medium text-slate-400">
+            <a href="#about" class="block hover:text-brand-accent transition-colors">About</a>
+            <a href="#skills" class="block hover:text-brand-accent transition-colors">Skills</a>
+            <a href="#experience" class="block hover:text-brand-accent transition-colors">Experience</a>
+            <a href="#projects" class="block hover:text-brand-accent transition-colors">Projects</a>
+            <a href="#contact" class="block hover:text-brand-accent transition-colors">Contact</a>
         </div>
     </nav>
 
@@ -122,31 +201,31 @@
         <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
             <div
                 class="mb-4 inline-block px-4 py-1.5 rounded-full border border-brand-accent/30 bg-brand-accent/10 text-brand-accent text-sm font-medium tracking-wide">
-                <span>Available for new projects</span>
+                <span>Open to Opportunities</span>
             </div>
             <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
                 Hi, I'm <span class="text-gradient">Madhavan S</span>
             </h1>
             <div class="h-10 mb-8 flex justify-center items-center">
-                <p
-                    class="text-xl md:text-2xl text-slate-300 font-light overflow-hidden whitespace-nowrap border-r-4 border-brand-accent pr-2 animate-typewriter">
-                    AI Development & Conversational Systems
+                <p id="typewriter"
+                    class="text-xl md:text-2xl text-slate-300 font-light typewriter-cursor pr-1 inline-block whitespace-nowrap overflow-hidden">
+                    AI Developer | LLMs, RAG &amp; Computer Vision
                 </p>
             </div>
 
-            <p class="text-slate-400 max-w-lg mx-auto mb-10 leading-relaxed">
-                Building intelligent solutions with Python, PyTorch, and LLMs. Specializing in RAG systems and Computer
-                Vision.
+            <p class="text-slate-400 max-w-xl mx-auto mb-10 leading-relaxed text-base md:text-lg">
+                AI Developer specializing in building robust LLM applications, RAG systems, intelligent automation
+                workflows, and real-time computer vision solutions.
             </p>
 
             <div class="flex flex-col md:flex-row gap-4 justify-center">
                 <a href="#projects"
                     class="px-8 py-3.5 rounded-lg bg-brand-accent text-dark-900 font-bold hover:bg-brand-accent/90 transition-transform hover:-translate-y-1 shadow-lg shadow-brand-accent/20">
-                    View Portfolio
+                    Explore Projects
                 </a>
-                <a href="https://www.linkedin.com/in/madhavan-sri/" target="_blank"
-                    class="px-8 py-3.5 rounded-lg border border-slate-600 text-white hover:border-brand-accent hover:text-brand-accent transition-all">
-                    Linkedin Profile
+                <a href="https://www.linkedin.com/in/madhavan-sri/" target="_blank" rel="noopener noreferrer"
+                    class="px-8 py-3.5 rounded-lg border border-slate-600 text-white hover:border-brand-accent hover:text-brand-accent transition-all flex items-center justify-center gap-2">
+                    <i class="fab fa-linkedin"></i> LinkedIn
                 </a>
             </div>
         </div>
@@ -168,14 +247,15 @@
                         <div class="relative glass-card p-8 rounded-2xl">
                             <h3 class="text-2xl font-bold text-white mb-4">About Me</h3>
                             <p class="text-slate-400 leading-7 mb-4">
-                                I am an AI Developer with approximately 1.5 years of experience in the field of Large
-                                Language Models (LLMs) and Computer Vision. My expertise lies in developing, training,
-                                and deploying robust AI models using PyTorch.
+                                I am an AI Developer with 2 years of professional experience building scalable LLM
+                                applications, Retrieval-Augmented Generation (RAG) pipelines, and computer vision
+                                models. I bridge the gap between advanced AI capabilities and reliable, production-ready
+                                software systems.
                             </p>
                             <p class="text-slate-400 leading-7">
-                                I specialize in building RAG (Retrieval-Augmented Generation) systems and Conversational
-                                AI, leveraging tools like LangChain and YOLO to create practical, real-world solutions
-                                ranging from chatbots to advanced tracking systems.
+                                My approach combines analytical engineering with state-of-the-art AI frameworks like
+                                LangChain, n8n, and YOLO, allowing me to build robust automation pipelines,
+                                context-aware conversational bots, and highly accurate object tracking systems.
                             </p>
                         </div>
                     </div>
@@ -188,9 +268,9 @@
                             <i class="fas fa-brain text-xl"></i>
                         </div>
                         <div>
-                            <h4 class="text-lg font-semibold text-white">AI & ML Specialist</h4>
-                            <p class="text-slate-500 mt-1">Deep understanding of LLMs, RAG architectures, and model
-                                training.</p>
+                            <h4 class="text-lg font-semibold text-white">LLMs &amp; RAG Systems</h4>
+                            <p class="text-slate-500 mt-1">Designing semantic search networks, custom RAG architectures,
+                                and multi-document reasoning loops with Qdrant and PGVector.</p>
                         </div>
                     </div>
 
@@ -200,21 +280,21 @@
                             <i class="fas fa-eye text-xl"></i>
                         </div>
                         <div>
-                            <h4 class="text-lg font-semibold text-white">Computer Vision</h4>
-                            <p class="text-slate-500 mt-1">Real-time object detection and tracking using YOLO and local
-                                inference.</p>
+                            <h4 class="text-lg font-semibold text-white">Computer Vision Integration</h4>
+                            <p class="text-slate-500 mt-1">Building custom dataset pipelines, and fine-tuning YOLO-based
+                                object segmentation, detection, and tracking systems.</p>
                         </div>
                     </div>
 
                     <div class="flex items-start">
                         <div
                             class="flex-shrink-0 w-12 h-12 rounded-lg bg-green-500/10 flex items-center justify-center text-green-400 mr-4">
-                            <i class="fas fa-code text-xl"></i>
+                            <i class="fas fa-network-wired text-xl"></i>
                         </div>
                         <div>
-                            <h4 class="text-lg font-semibold text-white">Full Stack Integration</h4>
-                            <p class="text-slate-500 mt-1">Deploying models into production-ready applications with
-                                modern stacks.</p>
+                            <h4 class="text-lg font-semibold text-white">AI Automation &amp; Backend APIs</h4>
+                            <p class="text-slate-500 mt-1">Orchestrating workflows using n8n, deploying high-performance
+                                APIs with FastAPI and Django, and integrating cloud infrastructure.</p>
                         </div>
                     </div>
                 </div>
@@ -229,56 +309,86 @@
                     class="text-gradient">Arsenal</span></h2>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Skill Group 1: Languages & Core -->
-                <div class="glass-card p-6 rounded-xl border-t-2 border-brand-accent">
+                <!-- Skill Group 1: Core Technologies & Backend -->
+                <div
+                    class="glass-card p-6 rounded-xl border-t-2 border-brand-accent hover:border-brand-accent/80 transition-all">
                     <h3 class="text-xl font-semibold text-white mb-6 flex items-center">
-                        <i class="fas fa-code mr-3 text-brand-accent"></i> Core Technology
+                        <i class="fas fa-code mr-3 text-brand-accent"></i> Core &amp; Backend
                     </h3>
-                    <div class="flex flex-wrap gap-3">
+                    <div class="flex flex-wrap gap-2.5">
                         <span
-                            class="px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-sm border border-slate-600">Python</span>
+                            class="px-3 py-1 rounded-full bg-slate-800/80 text-slate-300 text-xs font-semibold border border-slate-700/60 shadow-sm">Python</span>
                         <span
-                            class="px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-sm border border-slate-600">SQL</span>
+                            class="px-3 py-1 rounded-full bg-slate-800/80 text-slate-300 text-xs font-semibold border border-slate-700/60 shadow-sm">Django</span>
                         <span
-                            class="px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-sm border border-slate-600">Git</span>
+                            class="px-3 py-1 rounded-full bg-slate-800/80 text-slate-300 text-xs font-semibold border border-slate-700/60 shadow-sm">FastAPI</span>
                         <span
-                            class="px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-sm border border-slate-600">Linux</span>
+                            class="px-3 py-1 rounded-full bg-slate-800/80 text-slate-300 text-xs font-semibold border border-slate-700/60 shadow-sm">REST
+                            APIs</span>
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-800/80 text-slate-300 text-xs font-semibold border border-slate-700/60 shadow-sm">SQL</span>
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-800/80 text-slate-300 text-xs font-semibold border border-slate-700/60 shadow-sm">NoSQL</span>
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-800/80 text-slate-300 text-xs font-semibold border border-slate-700/60 shadow-sm">Git</span>
                     </div>
                 </div>
 
-                <!-- Skill Group 2: AI & ML -->
-                <div class="glass-card p-6 rounded-xl border-t-2 border-brand-purple">
+                <!-- Skill Group 2: AI & Machine Learning -->
+                <div
+                    class="glass-card p-6 rounded-xl border-t-2 border-brand-purple hover:border-brand-purple/80 transition-all">
                     <h3 class="text-xl font-semibold text-white mb-6 flex items-center">
-                        <i class="fas fa-network-wired mr-3 text-brand-purple"></i> AI Frameworks
+                        <i class="fas fa-brain mr-3 text-brand-purple"></i> AI &amp; Machine Learning
                     </h3>
-                    <div class="flex flex-wrap gap-3">
+                    <div class="flex flex-wrap gap-2.5">
                         <span
-                            class="px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-sm border border-slate-600">PyTorch</span>
+                            class="px-3 py-1 rounded-full bg-slate-800/80 text-slate-300 text-xs font-semibold border border-slate-700/60 shadow-sm">LLMs</span>
                         <span
-                            class="px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-sm border border-slate-600">TensorFlow</span>
+                            class="px-3 py-1 rounded-full bg-slate-800/80 text-slate-300 text-xs font-semibold border border-slate-700/60 shadow-sm">RAG</span>
                         <span
-                            class="px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-sm border border-slate-600">LangChain</span>
+                            class="px-3 py-1 rounded-full bg-slate-800/80 text-slate-300 text-xs font-semibold border border-slate-700/60 shadow-sm">LangChain</span>
                         <span
-                            class="px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-sm border border-slate-600">YOLO</span>
+                            class="px-3 py-1 rounded-full bg-slate-800/80 text-slate-300 text-xs font-semibold border border-slate-700/60 shadow-sm">LangGraph</span>
                         <span
-                            class="px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-sm border border-slate-600">HuggingFace</span>
+                            class="px-3 py-1 rounded-full bg-slate-800/80 text-slate-300 text-xs font-semibold border border-slate-700/60 shadow-sm">Qdrant
+                            Vector DB</span>
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-800/80 text-slate-300 text-xs font-semibold border border-slate-700/60 shadow-sm">PGVector</span>
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-800/80 text-slate-300 text-xs font-semibold border border-slate-700/60 shadow-sm">Semantic
+                            Search</span>
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-800/80 text-slate-300 text-xs font-semibold border border-slate-700/60 shadow-sm">Computer
+                            Vision</span>
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-800/80 text-slate-300 text-xs font-semibold border border-slate-700/60 shadow-sm">OpenCV</span>
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-800/80 text-slate-300 text-xs font-semibold border border-slate-700/60 shadow-sm">YOLO</span>
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-800/80 text-slate-300 text-xs font-semibold border border-slate-700/60 shadow-sm">PyTorch</span>
                     </div>
                 </div>
 
-                <!-- Skill Group 3: Deployment & Tools -->
-                <div class="glass-card p-6 rounded-xl border-t-2 border-green-400">
+                <!-- Skill Group 3: Cloud & Tools -->
+                <div
+                    class="glass-card p-6 rounded-xl border-t-2 border-green-400 hover:border-green-400/80 transition-all">
                     <h3 class="text-xl font-semibold text-white mb-6 flex items-center">
-                        <i class="fas fa-server mr-3 text-green-400"></i> Deployment
+                        <i class="fas fa-server mr-3 text-green-400"></i> Cloud &amp; Tools
                     </h3>
-                    <div class="flex flex-wrap gap-3">
+                    <div class="flex flex-wrap gap-2.5">
                         <span
-                            class="px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-sm border border-slate-600">Docker</span>
+                            class="px-3 py-1 rounded-full bg-slate-800/80 text-slate-300 text-xs font-semibold border border-slate-700/60 shadow-sm">AWS</span>
                         <span
-                            class="px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-sm border border-slate-600">Ollama</span>
+                            class="px-3 py-1 rounded-full bg-slate-800/80 text-slate-300 text-xs font-semibold border border-slate-700/60 shadow-sm">n8n
+                            (Automation)</span>
                         <span
-                            class="px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-sm border border-slate-600">Llama.cpp</span>
+                            class="px-3 py-1 rounded-full bg-slate-800/80 text-slate-300 text-xs font-semibold border border-slate-700/60 shadow-sm">Docker</span>
                         <span
-                            class="px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-sm border border-slate-600">AWS</span>
+                            class="px-3 py-1 rounded-full bg-slate-800/80 text-slate-300 text-xs font-semibold border border-slate-700/60 shadow-sm">Firebase</span>
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-800/80 text-slate-300 text-xs font-semibold border border-slate-700/60 shadow-sm">Firestore</span>
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-800/80 text-slate-300 text-xs font-semibold border border-slate-700/60 shadow-sm">Linux</span>
                     </div>
                 </div>
             </div>
@@ -286,156 +396,466 @@
     </section>
 
     <!-- Experience Timeline -->
-    <section id="experience" class="py-24 px-6">
+    <section id="experience" class="py-24 px-6 animate-fade-in">
         <div class="max-w-4xl mx-auto">
             <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-16">Professional <span
                     class="text-brand-purple">Journey</span></h2>
 
             <div class="relative border-l border-slate-700 ml-6 md:ml-10 space-y-12">
-                <!-- Experience Item -->
+
+                <!-- Experience Item 1: Change Makers ZB -->
                 <div class="relative pl-10 md:pl-16">
                     <div
                         class="absolute -left-3 top-2 w-6 h-6 rounded-full bg-brand-accent border-4 border-dark-900 shadow-[0_0_10px_rgba(56,189,248,0.5)]">
                     </div>
-                    <div class="glass-card p-8 rounded-xl hover:bg-slate-800/50 transition-colors">
-                        <div class="flex flex-col md:flex-row justify-between mb-2">
-                            <h3 class="text-2xl font-bold text-white">AI Developer</h3>
-                            <span class="text-brand-accent font-mono text-sm">
-                                <script>document.write(((d = new Date(), s = new Date(2025, 8)), (y = d.getFullYear() - s.getFullYear(), m = d.getMonth() - s.getMonth(), m < 0 && (y--, m += 12)), `${y > 0 ? y + " " + (y == 1 ? "Year " : "Years ") : ""}${m > 0 ? m + " " + (m == 1 ? "Month" : "Months") : ""}`))</script>
+                    <div class="glass-card p-8 rounded-xl hover:bg-slate-800/50 transition-all duration-300">
+                        <div class="flex flex-col md:flex-row justify-between mb-2 items-start md:items-center gap-1">
+                            <h3 class="text-2xl font-bold text-white">Technical Support Associate</h3>
+                            <span
+                                class="text-brand-accent font-mono text-sm px-2.5 py-0.5 rounded-full bg-brand-accent/10 border border-brand-accent/20">
+                                <script>document.write(((d = new Date(), s = new Date(2026, 1)), (y = d.getFullYear() - s.getFullYear(), m = d.getMonth() - s.getMonth(), m < 0 && (y--, m += 12)), `${y > 0 ? y + " " + (y == 1 ? "Year " : "Years ") : ""}${m > 0 ? m + " " + (m == 1 ? "Month" : "Months") : ""}`))</script>
                             </span>
                         </div>
-                        <h4 class="text-lg text-slate-400 font-medium mb-4">Elevix Tech LLP | Coimbatore | Sep 2025 -
-                            Present</h4>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                            Spearheading the development of advanced AI solutions using Python.
-                        </p>
-                        <ul class="list-disc list-inside text-slate-500 space-y-2 text-sm">
-                            <li>Designing and implementing RAG systems for context-aware data retrieval.</li>
-                            <li>Building conversational AI interfaces for enhanced user interaction.</li>
-                            <li>Deploying computer vision models for real-time analytics.</li>
+                        <h4 class="text-lg text-slate-400 font-medium mb-4">Change Makers ZB | Remote / India | Feb 2026
+                            - Present</h4>
+                        <ul class="list-disc list-inside text-slate-400 space-y-2 text-sm leading-relaxed">
+                            <li>Design and deploy backend rest APIs and services using Django framework to facilitate
+                                core business functions.</li>
+                            <li>Collaborate closely with internal teams to diagnose software issues and provide robust
+                                technical solutions, optimizing uptime.</li>
+                            <li>Assist in managing cloud deployments and server infrastructures to ensure consistent
+                                application responsiveness.</li>
                         </ul>
                     </div>
                 </div>
+
+                <!-- Experience Item 2: Elevix Tech LLP -->
                 <div class="relative pl-10 md:pl-16">
                     <div
                         class="absolute -left-3 top-2 w-6 h-6 rounded-full bg-brand-accent border-4 border-dark-900 shadow-[0_0_10px_rgba(56,189,248,0.5)]">
                     </div>
-                    <div class="glass-card p-8 rounded-xl hover:bg-slate-800/50 transition-colors">
-                        <div class="flex flex-col md:flex-row justify-between mb-2">
-                            <h3 class="text-2xl font-bold text-white">AI Developer</h3>
-                            <span class="text-brand-accent font-mono text-sm">1.5 Years</span>
+                    <div class="glass-card p-8 rounded-xl hover:bg-slate-800/50 transition-all duration-300">
+                        <div class="flex flex-col md:flex-row justify-between mb-2 items-start md:items-center gap-1">
+                            <h3 class="text-2xl font-bold text-white">AI Engineer</h3>
+                            <span
+                                class="text-brand-accent font-mono text-sm px-2.5 py-0.5 rounded-full bg-brand-accent/10 border border-brand-accent/20">
+                                6 Months
+                            </span>
                         </div>
-                        <h4 class="text-lg text-slate-400 font-medium mb-4">VGTS | Chennai | Feb 2024 - Jul 2025</h4>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                            AI Developer – LLMs & Computer Vision
-                        </p>
-                        <ul class="list-disc list-inside text-slate-500 space-y-2 text-sm">
-                            <li>Engineered scalable LLM workflows and automation using <strong>Google ADK, LangChain,
-                                    and LangGraph.</strong> for complex reasoning flows.</li>
-                            <li>Built high-performance <strong>Computer Vision</strong> models using <strong>PyTorch,
-                                    TensorFlow, ONNX, and YOLO</strong> optimizing accuracy from <strong>60% to
-                                    90%+</strong> and Visvalization using <strong>Supervision</strong>.</li>
-                            <li>
-                                <strong>Computer Vision Model Optimization:</strong> Enhanced vision performance through
-                                rigorous training data.
-                            </li>
-                            <li><strong>Multi-model orchestration</strong> to handle and maximized LLM precision.</li>
+                        <h4 class="text-lg text-slate-400 font-medium mb-4">Elevix Tech LLP | Coimbatore, India | Sep
+                            2025 - Feb 2026</h4>
+                        <ul class="list-disc list-inside text-slate-400 space-y-2 text-sm leading-relaxed">
+                            <li>Orchestrated internal automated tasks and integration processes using n8n, significantly
+                                cutting manual processing speeds.</li>
+                            <li>Engineered localized RAG-based internal conversational chatbots using LangChain to parse
+                                and retrieve answers from enterprise document assets.</li>
+                            <li>Fine-tuned LLM reasoning parameters and custom context prompt logic to maximize chatbot
+                                alignment, precision, and search accuracy.</li>
                         </ul>
                     </div>
                 </div>
+
+                <!-- Experience Item 3: VGTS -->
+                <div class="relative pl-10 md:pl-16">
+                    <div
+                        class="absolute -left-3 top-2 w-6 h-6 rounded-full bg-brand-accent border-4 border-dark-900 shadow-[0_0_10px_rgba(56,189,248,0.5)]">
+                    </div>
+                    <div class="glass-card p-8 rounded-xl hover:bg-slate-800/50 transition-all duration-300">
+                        <div class="flex flex-col md:flex-row justify-between mb-2 items-start md:items-center gap-1">
+                            <h3 class="text-2xl font-bold text-white">Vish Gyana Technology Solutions Pvt Ltd</h3>
+                            <span
+                                class="text-brand-accent font-mono text-sm px-2.5 py-0.5 rounded-full bg-brand-accent/10 border border-brand-accent/20">
+                                1.5 Years
+                            </span>
+                        </div>
+                        <h4 class="text-lg text-slate-400 font-medium mb-4 font-semibold">VGTS | Chennai, India | Feb
+                            2024 - Jul 2025</h4>
+
+                        <!-- Role 1 -->
+                        <div class="mb-6 border-l-2 border-slate-700 pl-4">
+                            <h5 class="text-white font-bold text-base">Jr AI Developer</h5>
+                            <span class="text-slate-500 text-xs font-mono">Jul 2024 - Jul 2025</span>
+                            <ul class="list-disc list-inside text-slate-400 space-y-1.5 text-sm mt-2 leading-relaxed">
+                                <li>Engineered complex LLM reasoning flows and agentic architectures leveraging
+                                    LangChain, LangGraph, and Google ADK.</li>
+                                <li>Developed and deployed high-performance Python backends utilizing Django and FastAPI
+                                    to host model endpoints.</li>
+                                <li>Implemented multi-model orchestration pipelines to distribute LLM queries,
+                                    maximizing retrieval precision.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Role 2 -->
+                        <div class="border-l-2 border-slate-700 pl-4">
+                            <h5 class="text-white font-bold text-base">AI Computer Vision Intern</h5>
+                            <span class="text-slate-500 text-xs font-mono">Feb 2024 - Jul 2024</span>
+                            <ul class="list-disc list-inside text-slate-400 space-y-1.5 text-sm mt-2 leading-relaxed">
+                                <li>Curated, processed, and formatted massive CV datasets, preparing clean annotation
+                                    targets for object detection models.</li>
+                                <li>Assisted in building and training custom computer vision models in PyTorch (such as
+                                    YOLO) for localization.</li>
+                                <li>Improved vision classification accuracy from 60% to over 90% and visual tracking
+                                    models using OpenCV and Supervision.</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
     <section id="projects" class="py-24 px-6 bg-dark-800/30">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-4">Featured <span
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-4 font-sans">Featured <span
                     class="text-gradient">Projects</span></h2>
-            <p class="text-center text-slate-500 mb-16 max-w-2xl mx-auto">Selected works demonstrating expertise in
-                conversational AI and Computer Vision.</p>
+            <p class="text-center text-slate-400 mb-16 max-w-2xl mx-auto text-sm md:text-base">
+                Explore custom-built systems demonstrating production-grade implementation of RAG, LLMs, AI Automation,
+                Computer Vision, and Backend Development.
+            </p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
+
+                <!-- Project 1: RAG-Based Chatbot -->
                 <div
-                    class="group relative rounded-xl overflow-hidden bg-dark-900 border border-slate-800 hover:border-brand-accent/50 transition-all duration-300 hover:shadow-2xl hover:shadow-brand-accent/10">
-                    <div class="h-48 bg-slate-800 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 to-transparent z-10"></div>
-                        <!-- Placeholder visual for project -->
+                    class="group relative flex flex-col justify-between rounded-xl overflow-hidden bg-dark-900 border border-slate-800 hover:border-brand-accent/50 transition-all duration-300 hover:shadow-2xl hover:shadow-brand-accent/10">
+                    <div
+                        class="h-32 bg-gradient-to-br from-sky-500/20 to-brand-accent/5 relative flex items-center justify-center border-b border-white/5">
                         <div
-                            class="w-full h-full bg-[url('https://source.unsplash.com/random/800x600/?ai,robot')] bg-cover bg-center opacity-60 group-hover:scale-110 transition-transform duration-700">
+                            class="w-14 h-14 rounded-full bg-brand-accent flex items-center justify-center text-dark-900 shadow-lg shadow-brand-accent/20 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-brain text-xl"></i>
                         </div>
                     </div>
-                    <div class="p-6 relative z-20 -mt-10">
-                        <div
-                            class="w-12 h-12 rounded-lg bg-brand-accent flex items-center justify-center text-dark-900 mb-4 shadow-lg">
-                            <i class="fas fa-comments text-xl"></i>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3
+                                class="text-xl font-bold text-white mb-2 group-hover:text-brand-accent transition-colors">
+                                RAG-Based Chatbot</h3>
+                            <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                                A high-performance Retrieval-Augmented Generation chatbot designed to parse, index, and
+                                query webpage data contextually using PGVector.
+                            </p>
+                            <ul class="list-disc list-inside text-slate-500 text-xs space-y-1 mb-5 leading-normal">
+                                <li>Extracted and indexed webpage content dynamically.</li>
+                                <li>Leveraged PGVector database for fast embeddings search.</li>
+                                <li>Built semantic context retrieval prompts using LangChain.</li>
+                            </ul>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Learning Chat Assistant</h3>
-                        <p class="text-slate-400 text-sm mb-4 line-clamp-3">
-                            A sophisticated conversational AI designed to assist in learning processes, leveraging
-                            modern NLP techniques for accurate and helpful responses.
-                        </p>
-                        <div class="flex flex-wrap gap-2 text-xs text-brand-accent font-mono">
-                            <span class="px-2 py-1 bg-brand-accent/10 rounded">RAG</span>
-                            <span class="px-2 py-1 bg-brand-accent/10 rounded">LLM</span>
-                            <span class="px-2 py-1 bg-brand-accent/10 rounded">Python</span>
+                        <div>
+                            <div
+                                class="flex flex-wrap gap-1.5 text-[10px] text-brand-accent font-mono font-semibold mb-4">
+                                <span
+                                    class="px-2 py-0.5 bg-brand-accent/10 rounded border border-brand-accent/20">Python</span>
+                                <span
+                                    class="px-2 py-0.5 bg-brand-accent/10 rounded border border-brand-accent/20">LangChain</span>
+                                <span
+                                    class="px-2 py-0.5 bg-brand-accent/10 rounded border border-brand-accent/20">PGVector</span>
+                                <span
+                                    class="px-2 py-0.5 bg-brand-accent/10 rounded border border-brand-accent/20">Semantic
+                                    Search</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-3 border-t border-slate-800/80">
+                                <a href="https://github.com/s-madhavan001" target="_blank" rel="noopener noreferrer"
+                                    class="inline-flex items-center text-xs font-semibold text-slate-400 hover:text-brand-accent transition-colors gap-1.5"
+                                    aria-label="GitHub Repository for RAG-Based Chatbot">
+                                    <i class="fab fa-github text-sm"></i> Repository
+                                </a>
+                                <span class="text-[10px] font-semibold text-slate-600 uppercase tracking-wider">Demo
+                                    Available</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 2 -->
+                <!-- Project 2: Social Media Automation -->
                 <div
-                    class="group relative rounded-xl overflow-hidden bg-dark-900 border border-slate-800 hover:border-brand-accent/50 transition-all duration-300 hover:shadow-2xl hover:shadow-brand-accent/10">
-                    <div class="h-48 bg-slate-800 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 to-transparent z-10"></div>
+                    class="group relative flex flex-col justify-between rounded-xl overflow-hidden bg-dark-900 border border-slate-800 hover:border-brand-accent/50 transition-all duration-300 hover:shadow-2xl hover:shadow-brand-accent/10">
+                    <div
+                        class="h-32 bg-gradient-to-br from-brand-purple/20 to-purple-800/5 relative flex items-center justify-center border-b border-white/5">
                         <div
-                            class="w-full h-full bg-[url('https://source.unsplash.com/random/800x600/?basketball,sport')] bg-cover bg-center opacity-60 group-hover:scale-110 transition-transform duration-700">
+                            class="w-14 h-14 rounded-full bg-brand-purple flex items-center justify-center text-white shadow-lg shadow-brand-purple/20 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-robot text-xl"></i>
                         </div>
                     </div>
-                    <div class="p-6 relative z-20 -mt-10">
-                        <div
-                            class="w-12 h-12 rounded-lg bg-brand-purple flex items-center justify-center text-white mb-4 shadow-lg">
-                            <i class="fas fa-video text-xl"></i>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3
+                                class="text-xl font-bold text-white mb-2 group-hover:text-brand-purple transition-colors">
+                                Social Media Automation</h3>
+                            <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                                Content automation workflows designed to streamline cross-platform scheduling. Built
+                                using n8n and refactored to LangChain for privacy.
+                            </p>
+                            <ul class="list-disc list-inside text-slate-500 text-xs space-y-1 mb-5 leading-normal">
+                                <li>Created automation flows on n8n workflows.</li>
+                                <li>Refactored logic into LangChain (Python) for self-hosting.</li>
+                                <li>Improved codebase privacy and long-term pipeline stability.</li>
+                            </ul>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Basketball Tracker</h3>
-                        <p class="text-slate-400 text-sm mb-4 line-clamp-3">
-                            Real-time sports analytics system using YOLO to track players and basketball movements,
-                            providing automated insights and statistics.
-                        </p>
-                        <div class="flex flex-wrap gap-2 text-xs text-brand-purple font-mono">
-                            <span class="px-2 py-1 bg-brand-purple/10 rounded">YOLO</span>
-                            <span class="px-2 py-1 bg-brand-purple/10 rounded">Computer Vision</span>
-                            <span class="px-2 py-1 bg-brand-purple/10 rounded">OpenCV</span>
+                        <div>
+                            <div
+                                class="flex flex-wrap gap-1.5 text-[10px] text-brand-purple font-mono font-semibold mb-4">
+                                <span
+                                    class="px-2 py-0.5 bg-brand-purple/10 rounded border border-brand-purple/20">Python</span>
+                                <span
+                                    class="px-2 py-0.5 bg-brand-purple/10 rounded border border-brand-purple/20">LangChain</span>
+                                <span
+                                    class="px-2 py-0.5 bg-brand-purple/10 rounded border border-brand-purple/20">n8n</span>
+                                <span
+                                    class="px-2 py-0.5 bg-brand-purple/10 rounded border border-brand-purple/20">Workflows</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-3 border-t border-slate-800/80">
+                                <a href="https://github.com/s-madhavan001" target="_blank" rel="noopener noreferrer"
+                                    class="inline-flex items-center text-xs font-semibold text-slate-400 hover:text-brand-accent transition-colors gap-1.5"
+                                    aria-label="GitHub Repository for Social Media Automation">
+                                    <i class="fab fa-github text-sm"></i> Repository
+                                </a>
+                                <span class="text-[10px] font-semibold text-slate-600 uppercase tracking-wider">Internal
+                                    Tool</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 3 -->
+                <!-- Project 3: Customer Support AI Chatbot -->
                 <div
-                    class="group relative rounded-xl overflow-hidden bg-dark-900 border border-slate-800 hover:border-brand-accent/50 transition-all duration-300 hover:shadow-2xl hover:shadow-brand-accent/10">
-                    <div class="h-48 bg-slate-800 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 to-transparent z-10"></div>
+                    class="group relative flex flex-col justify-between rounded-xl overflow-hidden bg-dark-900 border border-slate-800 hover:border-brand-accent/50 transition-all duration-300 hover:shadow-2xl hover:shadow-brand-accent/10">
+                    <div
+                        class="h-32 bg-gradient-to-br from-emerald-500/20 to-teal-800/5 relative flex items-center justify-center border-b border-white/5">
                         <div
-                            class="w-full h-full bg-[url('https://source.unsplash.com/random/800x600/?cpu,chip')] bg-cover bg-center opacity-60 group-hover:scale-110 transition-transform duration-700">
+                            class="w-14 h-14 rounded-full bg-emerald-500 flex items-center justify-center text-white shadow-lg shadow-emerald-500/20 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-headset text-xl"></i>
                         </div>
                     </div>
-                    <div class="p-6 relative z-20 -mt-10">
-                        <div
-                            class="w-12 h-12 rounded-lg bg-green-500 flex items-center justify-center text-white mb-4 shadow-lg">
-                            <i class="fas fa-laptop-code text-xl"></i>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3
+                                class="text-xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">
+                                Customer Support AI Chatbot</h3>
+                            <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                                A targeted course-specific Q&amp;A customer support chatbot restricting knowledge
+                                responses exclusively to purchased user modules.
+                            </p>
+                            <ul class="list-disc list-inside text-slate-500 text-xs space-y-1 mb-5 leading-normal">
+                                <li>Integrated Qdrant Vector DB for sub-second responses.</li>
+                                <li>Designed custom prompt constraints to prevent hallucinations.</li>
+                                <li>Structured strict document schema filtering by course ID.</li>
+                            </ul>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Local Edge AI</h3>
-                        <p class="text-slate-400 text-sm mb-4 line-clamp-3">
-                            Implementation of high-performance models like SmolVLM on local hardware (MacBook M3) for
-                            privacy-focused, offline-capable AI inference.
-                        </p>
-                        <div class="flex flex-wrap gap-2 text-xs text-green-400 font-mono">
-                            <span class="px-2 py-1 bg-green-500/10 rounded">Llama.cpp</span>
-                            <span class="px-2 py-1 bg-green-500/10 rounded">Edge Computing</span>
+                        <div>
+                            <div
+                                class="flex flex-wrap gap-1.5 text-[10px] text-emerald-400 font-mono font-semibold mb-4">
+                                <span
+                                    class="px-2 py-0.5 bg-emerald-500/10 rounded border border-emerald-500/20">Python</span>
+                                <span class="px-2 py-0.5 bg-emerald-500/10 rounded border border-emerald-500/20">Qdrant
+                                    DB</span>
+                                <span
+                                    class="px-2 py-0.5 bg-emerald-500/10 rounded border border-emerald-500/20">RAG</span>
+                                <span
+                                    class="px-2 py-0.5 bg-emerald-500/10 rounded border border-emerald-500/20">LLM</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-3 border-t border-slate-800/80">
+                                <a href="https://github.com/s-madhavan001" target="_blank" rel="noopener noreferrer"
+                                    class="inline-flex items-center text-xs font-semibold text-slate-400 hover:text-brand-accent transition-colors gap-1.5"
+                                    aria-label="GitHub Repository for Customer Support AI Chatbot">
+                                    <i class="fab fa-github text-sm"></i> Repository
+                                </a>
+                                <span class="text-[10px] font-semibold text-slate-600 uppercase tracking-wider">Live
+                                    API</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Project 4: Customer Segmentation using Vision AI -->
+                <div
+                    class="group relative flex flex-col justify-between rounded-xl overflow-hidden bg-dark-900 border border-slate-800 hover:border-brand-accent/50 transition-all duration-300 hover:shadow-2xl hover:shadow-brand-accent/10">
+                    <div
+                        class="h-32 bg-gradient-to-br from-rose-500/20 to-pink-800/5 relative flex items-center justify-center border-b border-white/5">
+                        <div
+                            class="w-14 h-14 rounded-full bg-rose-500 flex items-center justify-center text-white shadow-lg shadow-rose-500/20 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-users-viewfinder text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-rose-400 transition-colors">
+                                Customer Segmentation</h3>
+                            <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                                A Vision AI model classifying employees and customers in real-time, sending alerts to
+                                enhance store-floor analytics.
+                            </p>
+                            <ul class="list-disc list-inside text-slate-500 text-xs space-y-1 mb-5 leading-normal">
+                                <li>Developed real-time segmentation using custom YOLO.</li>
+                                <li>Achieved 90%+ classification and tracking accuracy.</li>
+                                <li>Visualized object overlays using Supervision and OpenCV.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="flex flex-wrap gap-1.5 text-[10px] text-rose-400 font-mono font-semibold mb-4">
+                                <span class="px-2 py-0.5 bg-rose-500/10 rounded border border-rose-500/20">Python</span>
+                                <span class="px-2 py-0.5 bg-rose-500/10 rounded border border-rose-500/20">OpenCV</span>
+                                <span class="px-2 py-0.5 bg-rose-500/10 rounded border border-rose-500/20">YOLO</span>
+                                <span
+                                    class="px-2 py-0.5 bg-rose-500/10 rounded border border-rose-500/20">Supervision</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-3 border-t border-slate-800/80">
+                                <a href="https://github.com/s-madhavan001" target="_blank" rel="noopener noreferrer"
+                                    class="inline-flex items-center text-xs font-semibold text-slate-400 hover:text-brand-accent transition-colors gap-1.5"
+                                    aria-label="GitHub Repository for Customer Segmentation AI">
+                                    <i class="fab fa-github text-sm"></i> Repository
+                                </a>
+                                <span class="text-[10px] font-semibold text-slate-600 uppercase tracking-wider">Vision
+                                    Model</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: Coin Recognition using Vision AI -->
+                <div
+                    class="group relative flex flex-col justify-between rounded-xl overflow-hidden bg-dark-900 border border-slate-800 hover:border-brand-accent/50 transition-all duration-300 hover:shadow-2xl hover:shadow-brand-accent/10">
+                    <div
+                        class="h-32 bg-gradient-to-br from-amber-500/20 to-orange-800/5 relative flex items-center justify-center border-b border-white/5">
+                        <div
+                            class="w-14 h-14 rounded-full bg-amber-500 flex items-center justify-center text-white shadow-lg shadow-amber-500/20 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-coins text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
+                                Coin Recognition AI</h3>
+                            <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                                Computer vision system analyzing coin image frames, identifying coin value and currency
+                                categories automatically.
+                            </p>
+                            <ul class="list-disc list-inside text-slate-500 text-xs space-y-1 mb-5 leading-normal">
+                                <li>Analyzed unique coins based on image edge patterns.</li>
+                                <li>Built coin detection boxes using PyTorch &amp; YOLO.</li>
+                                <li>Wrapped detection modules into an interactive video feed.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="flex flex-wrap gap-1.5 text-[10px] text-amber-400 font-mono font-semibold mb-4">
+                                <span
+                                    class="px-2 py-0.5 bg-amber-500/10 rounded border border-amber-500/20">Python</span>
+                                <span
+                                    class="px-2 py-0.5 bg-amber-500/10 rounded border border-amber-500/20">OpenCV</span>
+                                <span class="px-2 py-0.5 bg-amber-500/10 rounded border border-amber-500/20">YOLO</span>
+                                <span
+                                    class="px-2 py-0.5 bg-amber-500/10 rounded border border-amber-500/20">PyTorch</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-3 border-t border-slate-800/80">
+                                <a href="https://github.com/s-madhavan001" target="_blank" rel="noopener noreferrer"
+                                    class="inline-flex items-center text-xs font-semibold text-slate-400 hover:text-brand-accent transition-colors gap-1.5"
+                                    aria-label="GitHub Repository for Coin Recognition AI">
+                                    <i class="fab fa-github text-sm"></i> Repository
+                                </a>
+                                <span class="text-[10px] font-semibold text-slate-600 uppercase tracking-wider">Object
+                                    CV</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6: Video Upload Platform -->
+                <div
+                    class="group relative flex flex-col justify-between rounded-xl overflow-hidden bg-dark-900 border border-slate-800 hover:border-brand-accent/50 transition-all duration-300 hover:shadow-2xl hover:shadow-brand-accent/10">
+                    <div
+                        class="h-32 bg-gradient-to-br from-blue-500/20 to-indigo-800/5 relative flex items-center justify-center border-b border-white/5">
+                        <div
+                            class="w-14 h-14 rounded-full bg-blue-500 flex items-center justify-center text-white shadow-lg shadow-blue-500/20 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-play-circle text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
+                                Video Sharing Platform</h3>
+                            <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                                A high-performance social video API facilitating secure content uploads and short-form
+                                video streaming feeds.
+                            </p>
+                            <ul class="list-disc list-inside text-slate-500 text-xs space-y-1 mb-5 leading-normal">
+                                <li>Developed core backend REST APIs utilizing FastAPI.</li>
+                                <li>Configured cloud upload pipeline using AWS services.</li>
+                                <li>Implemented media streaming optimization protocols.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="flex flex-wrap gap-1.5 text-[10px] text-blue-400 font-mono font-semibold mb-4">
+                                <span
+                                    class="px-2 py-0.5 bg-blue-500/10 rounded border border-blue-500/20">FastAPI</span>
+                                <span class="px-2 py-0.5 bg-blue-500/10 rounded border border-blue-500/20">AWS</span>
+                                <span class="px-2 py-0.5 bg-blue-500/10 rounded border border-blue-500/20">Python</span>
+                                <span class="px-2 py-0.5 bg-blue-500/10 rounded border border-blue-500/20">Backend
+                                    APIs</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-3 border-t border-slate-800/80">
+                                <a href="https://github.com/s-madhavan001" target="_blank" rel="noopener noreferrer"
+                                    class="inline-flex items-center text-xs font-semibold text-slate-400 hover:text-brand-accent transition-colors gap-1.5"
+                                    aria-label="GitHub Repository for Video Upload Platform">
+                                    <i class="fab fa-github text-sm"></i> Repository
+                                </a>
+                                <span class="text-[10px] font-semibold text-slate-600 uppercase tracking-wider">REST
+                                    API</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 7: Employee Management System -->
+                <div
+                    class="group relative flex flex-col justify-between rounded-xl overflow-hidden bg-dark-900 border border-slate-800 hover:border-brand-accent/50 transition-all duration-300 hover:shadow-2xl hover:shadow-brand-accent/10">
+                    <div
+                        class="h-32 bg-gradient-to-br from-violet-500/20 to-purple-800/5 relative flex items-center justify-center border-b border-white/5">
+                        <div
+                            class="w-14 h-14 rounded-full bg-violet-500 flex items-center justify-center text-white shadow-lg shadow-violet-500/20 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-id-badge text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-violet-400 transition-colors">
+                                Employee Management System</h3>
+                            <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                                An internal corporate software platform managing department directories, logs, roles,
+                                and profiles securely.
+                            </p>
+                            <ul class="list-disc list-inside text-slate-500 text-xs space-y-1 mb-5 leading-normal">
+                                <li>Designed robust and normalized relational SQL schemas.</li>
+                                <li>Built Django-based authentication and secure views.</li>
+                                <li>Developed clean REST API endpoints for user records.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div
+                                class="flex flex-wrap gap-1.5 text-[10px] text-violet-400 font-mono font-semibold mb-4">
+                                <span
+                                    class="px-2 py-0.5 bg-violet-500/10 rounded border border-violet-500/20">Django</span>
+                                <span
+                                    class="px-2 py-0.5 bg-violet-500/10 rounded border border-violet-500/20">SQL</span>
+                                <span
+                                    class="px-2 py-0.5 bg-violet-500/10 rounded border border-violet-500/20">Python</span>
+                                <span
+                                    class="px-2 py-0.5 bg-violet-500/10 rounded border border-violet-500/20">Backend</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-3 border-t border-slate-800/80">
+                                <a href="https://github.com/s-madhavan001" target="_blank" rel="noopener noreferrer"
+                                    class="inline-flex items-center text-xs font-semibold text-slate-400 hover:text-brand-accent transition-colors gap-1.5"
+                                    aria-label="GitHub Repository for Employee Management System">
+                                    <i class="fab fa-github text-sm"></i> Repository
+                                </a>
+                                <span class="text-[10px] font-semibold text-slate-600 uppercase tracking-wider">Internal
+                                    Web</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -447,10 +867,10 @@
             <div
                 class="inline-block p-1 rounded-2xl bg-gradient-to-r from-slate-800 to-slate-900 border border-slate-700">
                 <div class="px-10 py-6">
-                    <h3 class="text-xl font-bold text-white">Anna University</h3>
-                    <p class="text-brand-accent mt-2">B.Tech in Artificial Intelligence & Data Science</p>
-                    <p class="text-slate-500 text-sm mt-1">Foundation in Machine Learning, Algorithms, and System
-                        Design.</p>
+                    <h3 class="text-xl font-bold text-white">Anna University (JIT)</h3>
+                    <p class="text-brand-accent mt-2">B.Tech in Artificial Intelligence &amp; Data Science</p>
+                    <p class="text-slate-500 text-sm mt-1">Foundation in Machine Learning, Statistical Analysis,
+                        Algorithms, and System Design (2020 - 2024).</p>
                 </div>
             </div>
         </div>
@@ -461,22 +881,25 @@
         <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
             <h2 class="text-3xl font-bold text-white mb-8">Let's <span class="text-gradient">Connect</span></h2>
             <div class="flex justify-center space-x-8 mb-12">
-                <a href="https://www.linkedin.com/in/madhavan-sri/" target="_blank"
-                    class="w-14 h-14 rounded-full bg-slate-800 flex items-center justify-center text-2xl text-white hover:bg-brand-accent hover:text-dark-900 transition-all hover:-translate-y-2">
+                <a href="https://www.linkedin.com/in/madhavan-sri/" target="_blank" rel="noopener noreferrer"
+                    class="w-14 h-14 rounded-full bg-slate-800 flex items-center justify-center text-2xl text-white hover:bg-brand-accent hover:text-dark-900 transition-all hover:-translate-y-2"
+                    aria-label="LinkedIn Profile">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
-                <!-- <a href="mailto:contact@madhavan.ai" -->
                 <a href="mailto:sivmadhavan@gmail.com"
-                    class="w-14 h-14 rounded-full bg-slate-800 flex items-center justify-center text-2xl text-white hover:bg-brand-purple hover:text-white transition-all hover:-translate-y-2">
+                    class="w-14 h-14 rounded-full bg-slate-800 flex items-center justify-center text-2xl text-white hover:bg-brand-purple hover:text-white transition-all hover:-translate-y-2"
+                    aria-label="Email Address">
                     <i class="fas fa-envelope"></i>
                 </a>
-                <a href="https://github.com/s-madhavan001" target="_blank"
-                    class="w-14 h-14 rounded-full bg-slate-800 flex items-center justify-center text-2xl text-white hover:bg-white hover:text-dark-900 transition-all hover:-translate-y-2">
+                <a href="https://github.com/s-madhavan001" target="_blank" rel="noopener noreferrer"
+                    class="w-14 h-14 rounded-full bg-slate-800 flex items-center justify-center text-2xl text-white hover:bg-white hover:text-dark-900 transition-all hover:-translate-y-2"
+                    aria-label="GitHub Profile">
                     <i class="fab fa-github"></i>
                 </a>
                 <a href="https://drive.google.com/file/d/12BUq-rSzKBG_Qtgf5BM0KTKAP_BguyWP/view?usp=sharing"
-                    target="_blank"
-                    class="w-14 h-14 rounded-full bg-slate-800 flex items-center justify-center text-2xl text-white hover:bg-white hover:text-slate-900 transition-all hover:-translate-y-2 shadow-lg">
+                    target="_blank" rel="noopener noreferrer"
+                    class="w-14 h-14 rounded-full bg-slate-800 flex items-center justify-center text-2xl text-white hover:bg-white hover:text-slate-900 transition-all hover:-translate-y-2 shadow-lg"
+                    aria-label="Resume Document">
                     <i class="fas fa-file-lines"></i>
                 </a>
             </div>
@@ -486,6 +909,53 @@
         </div>
     </footer>
 
+    <!-- Mobile Menu Toggle JavaScript & Typewriter -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    mobileMenu.classList.toggle('hidden');
+                });
+
+                // Close mobile menu when clicking outside of it
+                document.addEventListener('click', (e) => {
+                    if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+
+                // Close menu when clicking navigation links
+                const navLinks = mobileMenu.querySelectorAll('a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
+
+            // Typewriter Animation
+            const typewriter = document.getElementById("typewriter");
+            if (typewriter) {
+                const text = "AI Developer | LLMs, RAG & Computer Vision";
+                let index = 0;
+                const speed = 75; // Typing speed in ms
+                typewriter.innerHTML = ""; // Clear text for animation start
+
+                function type() {
+                    if (index < text.length) {
+                        typewriter.innerHTML += text.charAt(index);
+                        index++;
+                        setTimeout(type, speed);
+                    }
+                }
+                setTimeout(type, 300); // Short initial delay
+            }
+        });
+    </script>
 </body>
 
 </html>
